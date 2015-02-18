@@ -1,5 +1,4 @@
-﻿using Datalist;
-using Datalist.Web.Datalists;
+﻿using Datalist.Web.Datalists;
 using System;
 
 namespace Datalist.Web.Models

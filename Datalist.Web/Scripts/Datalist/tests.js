@@ -564,7 +564,7 @@ test('Update data, updates table data', 1, function () {
 
     var expectedData = '';
     for (var i = 0; i < testData.Rows.length; i++) {
-        var tableRow = '<tr>'
+        var tableRow = '<tr>';
         var row = testData.Rows[i];
         $.each(testData.Columns, function (index, column) {
             tableRow += '<td class="' + (column.CssClass != null ? column.CssClass : '') + '">' + (row[column.Key] != null ? row[column.Key] : '') + '</td>';
