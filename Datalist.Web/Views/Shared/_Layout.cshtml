@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="~/Content/themes/base/all.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/Datalist/datalist.css" rel="stylesheet" />
-    <link href="~/Content/qunit.css" rel="stylesheet" />
-    <link href="~/Content/site.css" rel="stylesheet" />
+    @Styles.Render("~/Content/JQueryUI/Theme/Bundle")
+    @Styles.Render("~/Content/Bootstrap/Bundle")
+    @Styles.Render("~/Content/Datalist/Bundle")
+    @Styles.Render("~/Content/QUnit/Bundle")
+    @Styles.Render("~/Content/Shared/Bundle")
 </head>
 
 <body>
@@ -34,12 +34,12 @@
         @RenderBody()
         @Html.Partial("_Datalist")
     </div>
-    <script src="~/Scripts/jquery-2.1.3.js"></script>
-    <script src="~/Scripts/jquery-ui-1.11.3.js"></script>
-    <script src="~/Scripts/Datalist/datalist.js"></script>
+    @Scripts.Render("~/Scripts/JQuery/Bundle")
+    @Scripts.Render("~/Scripts/JQueryUI/Bundle")
+    @Scripts.Render("~/Scripts/Datalist/Bundle")
     @if (ViewContext.RouteData.Values["controller"].ToString() == "Datalist" && ViewContext.RouteData.Values["action"].ToString() == "Tests")
     {
-        <script src="/Scripts/qunit.js"></script>
+        @Scripts.Render("~/Scripts/QUnit/Bundle")
         <script src="/Scripts/Datalist/tests.js"></script>
     }
 
