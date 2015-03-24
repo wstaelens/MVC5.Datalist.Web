@@ -488,9 +488,9 @@ test('Updates header', function () {
     var columnCount = 0;
     var expectedHeader = '<tr>';
     $.each(testData.Columns, function (index, column) {
-        expectedHeader += '<th class="' + (column.CssClass != null ? column.CssClass : '') + '" data-column="' + column.Key + '">' + column.Header;
+        expectedHeader += '<th class="' + (column.CssClass != null ? column.CssClass : '') + '" data-column="' + column.Key + '"><span class="datalist-header-title">' + column.Header + '</span>'
         if (testInput.datalist('option', 'sortColumn') == column.Key || (testInput.datalist('option', 'sortColumn') == '' && columnCount == 0))
-            expectedHeader += '<span class="datalist-sort-arrow glyphicon glyphicon-sort-by-attributes' + (testInput.datalist('option', 'sortOrder') == 'Asc' ? '' : '-alt') + '"></span>';
+            expectedHeader += '<span class="datalist-sort-arrow ' + (testInput.datalist('option', 'sortOrder') == 'Asc' ? 'asc' : 'desc') + '"></span>';
         else
             expectedHeader += '<span class=\"datalist-sort-arrow\"></span>';
 
@@ -570,7 +570,7 @@ test('Update data, updates table data', 1, function () {
             tableRow += '<td class="' + (column.CssClass != null ? column.CssClass : '') + '">' + (row[column.Key] != null ? row[column.Key] : '') + '</td>';
         });
 
-        tableRow += '<td class="datalist-select-cell"><div class="datalist-select-container"><i class="glyphicon glyphicon-ok"></i></div></td></tr>';
+        tableRow += '<td class="datalist-select-cell"><div class="datalist-select-container"><i></i></div></td></tr>';
         expectedData += tableRow;
     }
 
@@ -579,8 +579,8 @@ test('Update data, updates table data', 1, function () {
 test('Update data, binds select spans', 15, function () {
     var iteration = 0;
     var mvcDatalist = testInput.datalist().data('mvc-datalist');
-    mvcDatalist._bindSelect = function (datalist, selectCell, dataRow) {
-        equal(selectCell, datalist.find('td.datalist-select-cell')[iteration]);
+    mvcDatalist._bindSelect = function (datalist, selectRow, dataRow) {
+        equal(selectRow, datalist.find('tbody tr')[iteration]);
         equal(dataRow, testData.Rows[iteration++]);
         equal(datalist[0], testDatalist[0]);
     };
