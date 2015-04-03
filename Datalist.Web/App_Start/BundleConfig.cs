@@ -18,8 +18,8 @@ namespace Datalist.Web
         }
         private static void RegisterStyles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/JQueryUI/Theme/Bundle").Include("~/Content/themes/base/all.css"));
-            bundles.Add(new StyleBundle("~/Content/Bootstrap/Bundle").Include("~/Content/bootstrap.css"));
+            bundles.Add(new StyleBundle("~/Content/Bootstrap/Bundle").Include("~/Content/Bootstrap/*.css"));
+            bundles.Add(new StyleBundle("~/Content/JQueryUI/Bundle").Include("~/Content/JQueryUI/*.css"));
             bundles.Add(new StyleBundle("~/Content/Datalist/Bundle").Include("~/Content/Datalist/*.css"));
             bundles.Add(new StyleBundle("~/Content/QUnit/Bundle").Include("~/Content/qunit.css"));
             bundles.Add(new StyleBundle("~/Content/Shared/Bundle").Include("~/Content/site.css"));
