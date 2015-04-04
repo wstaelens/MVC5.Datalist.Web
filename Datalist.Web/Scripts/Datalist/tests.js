@@ -219,6 +219,13 @@ test('Initializes keyup on autocomplete', 1, function () {
 
     testInput.keyup();
 });
+test('On tab keyup does not select', 0, function () {
+    testInput.datalist().data('mvc-datalist')._select = function (data) {
+        equal(data, null);
+    };
+
+    testInput.trigger(jQuery.Event('keyup', { which: 9 }));
+});
 test('Removes all preceding elements', 1, function () {
     equal(testInput.datalist().prevAll().length, 0);
 });
