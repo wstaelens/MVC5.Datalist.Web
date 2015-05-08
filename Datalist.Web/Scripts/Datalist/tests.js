@@ -19,9 +19,9 @@ QUnit.testStart(function (details) {
         .attr('data-datalist-sort-column', 'FirstName')
         .attr('class', 'form-control datalist-input')
         .attr('data-datalist-records-per-page', 30)
-        .attr('data-datalist-hidden-input', 'Test')
         .attr('data-datalist-sort-order', 'Desc')
         .attr('data-datalist-term', 'test')
+        .attr('data-datalist-for', 'Test')
         .attr('data-datalist-page', '0');
 
     testData = {
@@ -105,7 +105,11 @@ QUnit.testDone(function (details) {
     testDatalist.find('.datalist-search-input').val('');
 });
 
-test('Datalist init on document ready', 1, function () {
+asyncTest('Datalist init on document ready', 1, function () {
+    setTimeout(function () {
+        start();
+    }, 300);
+
     ok(testInput.data('mvc-datalist'));
 });
 test('Datalist language init', 3, function () {
@@ -120,13 +124,13 @@ test('Datalist spinner init', 3, function () {
     equal(datalistSpinner.spinner('option', 'max'), 99);
 });
 test('Datalist dialog init', 7, function () {
-    ok(testDatalist.hasClass('ui-dialog-content'));
     equal(testDatalist.dialog('option', 'autoOpen'), false);
     equal(testDatalist.dialog('option', 'minHeight'), 210);
     equal(testDatalist.dialog('option', 'height'), 'auto');
     equal(testDatalist.dialog('option', 'minWidth'), 455);
     equal(testDatalist.dialog('option', 'width'), 'auto');
     equal(testDatalist.dialog('option', 'modal'), true);
+    ok(testDatalist.hasClass('ui-dialog-content'));
 });
 
 test('Does not create mvc-datalist on non datalist input', 1, function () {
@@ -150,15 +154,16 @@ test('Initializes options', 12, function () {
     equal(testInput.datalist('option', 'filters').join(), ['Filter1', 'Filter2'].join());
 });
 
-test('Initializes filters', 2, function () {
-    testInput.datalist().data('mvc-datalist')._select = function (data) {
+test('Initializes filters', 4, function () {
+    testInput.datalist().data('mvc-datalist')._select = function (data, firstLoad) {
+        equal(firstLoad, false);
         equal(data, null);
     };
 
     filter1.change();
     filter2.change();
 });
-test('Initializes filters with events', 10, function () {
+test('Initializes filters with events', 12, function () {
     var filters = [filter1, filter2];
     var iteration = 0;
 
@@ -171,7 +176,8 @@ test('Initializes filters with events', 10, function () {
         }
     });
 
-    testInput.data('mvc-datalist')._select = function (data) {
+    testInput.data('mvc-datalist')._select = function (data, firstLoad) {
+        equal(firstLoad, false);
         equal(data, null);
     };
 
@@ -197,11 +203,18 @@ test('Initializes autocomplete', 2, function () {
     ok(testInput.datalist().hasClass('ui-autocomplete-input'));
     equal(testInput.autocomplete('option', 'minLength'), 1);
 });
-test('Initializes autocomplete select', 2, function () {
-    testInput.datalist().data('mvc-datalist')._select = function (data) {
-        equal(data.DatalistIdKey, 'Test2');
-        equal(data.DatalistAcKey, 'Test3');
-    };
+test('Initializes autocomplete select', 5, function () {
+    testInput.datalist({
+        select: function (e, element, hiddenElement, data, firstLoad) {
+            hiddenElement.value = 'My own hidden value';
+            element.value = 'My own value';
+            e.preventDefault();
+
+            equal(firstLoad, false);
+            equal(data.DatalistIdKey, 'Test2');
+            equal(data.DatalistAcKey, 'Test3');
+        }
+    });
 
     testInput.data('ui-autocomplete')._trigger('select', 'autocompleteselect', {
         item: {
@@ -211,16 +224,21 @@ test('Initializes autocomplete select', 2, function () {
             }
         }
     });
+
+    equal(testInput.val(), 'My own value');
+    equal(hiddenInput.val(), 'My own hidden value');
 });
-test('Initializes keyup on autocomplete', 1, function () {
-    testInput.datalist().data('mvc-datalist')._select = function (data) {
+test('Initializes keyup on autocomplete', 2, function () {
+    testInput.datalist().data('mvc-datalist')._select = function (data, firstLoad) {
+        equal(firstLoad, false);
         equal(data, null);
     };
 
     testInput.keyup();
 });
 test('On tab keyup does not select', 0, function () {
-    testInput.datalist().data('mvc-datalist')._select = function (data) {
+    testInput.datalist().data('mvc-datalist')._select = function (data, firstLoad) {
+        equal(firstLoad, false);
         equal(data, null);
     };
 
@@ -354,6 +372,26 @@ test('Default select clears values', 2, function () {
     equal(hiddenInput.val(), '');
     equal(testInput.val(), '');
 });
+test('Default select fires changed events', 2, function () {
+    hiddenInput.change(function () {
+        ok(true);
+    });
+    testInput.change(function () {
+        ok(true);
+    });
+
+    testInput.datalist().data('mvc-datalist')._defaultSelect(null);
+});
+test('Default select does not fires changed events', 0, function () {
+    hiddenInput.change(function () {
+        ok(false);
+    });
+    testInput.change(function () {
+        ok(false);
+    });
+
+    testInput.datalist().data('mvc-datalist')._defaultSelect(null, true);
+});
 
 asyncTest('Does not call select on load', 0, function () {
     testInput.datalist({
@@ -393,29 +431,32 @@ asyncTest('Calls select on load', 1, function () {
     }, 200);
 });
 
-test('Calls select and default select', 6, function () {
+test('Calls select and default select', 9, function () {
     var selectedData = { DatalistIdKey: 'Test' };
     testInput.datalist({
-        select: function (e, element, hiddenElement, data) {
+        select: function (e, element, hiddenElement, data, firstLoad) {
             equal(hiddenElement, hiddenInput[0]);
             equal(element, testInput[0]);
             equal(data, selectedData);
+            equal(firstLoad, true);
             ok(e);
         }
     });
 
-    testInput.data('mvc-datalist')._defaultSelect = function (data) {
+    testInput.data('mvc-datalist')._defaultSelect = function (data, firstLoad) {
         equal(data, selectedData);
+        equal(firstLoad, true);
     };
 
-    testInput.data('mvc-datalist')._select(selectedData);
+    testInput.data('mvc-datalist')._select(selectedData, true);
 
     testInput.datalist('destroy').datalist();
-    testInput.data('mvc-datalist')._defaultSelect = function (data) {
+    testInput.data('mvc-datalist')._defaultSelect = function (data, firstLoad) {
         equal(data, selectedData);
+        equal(firstLoad, true);
     };
 
-    testInput.data('mvc-datalist')._select(selectedData);
+    testInput.data('mvc-datalist')._select(selectedData, true);
 });
 test('Default select prevented', 0, function () {
     testInput.datalist({
@@ -632,11 +673,12 @@ test('Updates navigation with paginator', 18, function () {
     equal($(links[8]).data('page'), 5);
 });
 
-test('Binds datalist table select', 10, function () {
+test('Binds datalist table select', 15, function () {
     var iteration = 0;
     var mvcDatalist = testInput.datalist().data('mvc-datalist');
-    mvcDatalist._select = function (data) {
+    mvcDatalist._select = function (data, firstLoad) {
         equal(data, testData.Rows[iteration++]);
+        equal(firstLoad, false);
     };
     mvcDatalist._updateData(testDatalist, testData);
 
@@ -666,10 +708,10 @@ test('Cleans up', 9, function () {
     testInput.datalist();
     equal(testInput.attr('data-datalist-records-per-page'), null);
     equal(testInput.attr('data-datalist-dialog-title'), null);
-    equal(testInput.attr('data-datalist-hidden-input'), null);
     equal(testInput.attr('data-datalist-sort-column'), null);
     equal(testInput.attr('data-datalist-sort-order'), null);
     equal(testInput.attr('data-datalist-filters'), null);
+    equal(testInput.attr('data-datalist-for'), "Test");
     equal(testInput.attr('data-datalist-term'), null);
     equal(testInput.attr('data-datalist-page'), null);
     equal(testInput.attr('data-datalist-url'), null);
@@ -683,8 +725,8 @@ test('Destroys datalist', 10, function () {
     });
 
     testInput.datalist('destroy');
+    equal(testInput.attr('data-datalist-for'), 'Test');
     equal(testInput.attr('data-datalist-sort-order'), 'Desc');
-    equal(testInput.attr('data-datalist-hidden-input'), 'Test');
     equal(testInput.attr('data-datalist-records-per-page'), 30);
     equal(testInput.attr('data-datalist-sort-column'), 'FirstName');
     equal(testInput.attr('data-datalist-dialog-title'), 'TestTitle');

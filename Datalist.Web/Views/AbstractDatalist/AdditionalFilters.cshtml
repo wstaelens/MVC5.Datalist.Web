@@ -31,10 +31,9 @@ to be accessible for <a href="/Datalist/API/AbstractDatalist/GetData">GetData()<
 }
 <span class="kwrd">public</span> <span class="cls">JsonResult</span> Example(<span class="cls">DatalistFilter</span> filter, <span class="cls">String</span> AdditionalFilterId)
 {
-    <span class="kwrd">var</span> additionalFilters = <span class="kwrd">new</span> Dictionary&lt;<span class="cls">String</span>, <span class="cls">Object</span>&gt;();
-    additionalFilters.Add(<span class="str">"Id"</span>, AdditionalFilterId);
+    <strong>filter.AdditionalFilters.Add(<span class="str">"Id"</span>, AdditionalFilterId);</strong>
 
-    <span class="kwrd">return</span> GetData(<span class="kwrd">new</span> <span class="cls">ExampleDatalist</span>(), filter, additionalFilters);
+    <span class="kwrd">return</span> GetData(<span class="kwrd">new</span> <span class="cls">ExampleDatalist</span>(), filter);
 }
 </pre>
         <div class="input-group">

@@ -50,10 +50,10 @@
             <p>
                 <code>
                     <span style="color: #000000">
-                        <span class="kwrd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">AbstractDatalist</span> datalist, <span class="cls">DatalistFilter</span> filter, <span class="cls">Dictionary</span>&lt;<span class="cls">String</span>, <span class="cls">Object</span>&gt; filters = <span class="kwrd">null</span>)</br>
+                        <span class="kwrd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">AbstractDatalist</span> datalist, <span class="cls">DatalistFilter</span> filter)</br>
                         {</br>
                         &nbsp;&nbsp;&nbsp;&nbsp;datalist.CurrentFilter = filter;</br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;filter.AdditionalFilters = filters ?? filter.AdditionalFilters;</br>
+                        </br>
                         &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwrd">return</span> Json(datalist.GetData(), <span class="cls">JsonRequestBehavior</span>.AllowGet);</br>
                         }</br>
                         </br>

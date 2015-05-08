@@ -1,16 +1,17 @@
 ﻿using Datalist.Web.Datalists;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.SessionState;
 
 namespace Datalist.Web.Controllers
 {
+    [SessionState(SessionStateBehavior.ReadOnly)]
     public class DatalistController : Controller
     {
-        private JsonResult GetData(AbstractDatalist datalist, DatalistFilter filter, Dictionary<String, Object> filters = null)
+        private JsonResult GetData(AbstractDatalist datalist, DatalistFilter filter)
         {
             datalist.CurrentFilter = filter;
-            filter.AdditionalFilters = filters ?? filter.AdditionalFilters;
+
             return Json(datalist.GetData(), JsonRequestBehavior.AllowGet);
         }
 
@@ -24,10 +25,9 @@ namespace Datalist.Web.Controllers
         }
         public JsonResult DifferentUrlExample(DatalistFilter filter, String AdditionalFilterId)
         {
-            Dictionary<String, Object> additionalFilters = new Dictionary<String, Object>();
-            additionalFilters.Add("Id", AdditionalFilterId);
+            filter.AdditionalFilters.Add("Id", AdditionalFilterId);
 
-            return GetData(new ExampleDatalist(), filter, additionalFilters);
+            return GetData(new ExampleDatalist(), filter);
         }
 
         [HttpGet]
