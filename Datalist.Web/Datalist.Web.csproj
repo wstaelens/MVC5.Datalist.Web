@@ -116,14 +116,22 @@
     <Content Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\bootstrap.min.js">
+      <DependentUpon>bootstrap.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\Datalist\datalist.js" />
-    <Content Include="Scripts\Datalist\datalist.min.js" />
+    <Content Include="Scripts\Datalist\datalist.min.js">
+      <DependentUpon>datalist.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\Datalist\tests.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js">
+      <DependentUpon>jquery-2.1.4.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
-    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js">
+      <DependentUpon>jquery-ui-1.11.4.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\qunit.js" />
     <Content Include="Web.config" />
   </ItemGroup>
