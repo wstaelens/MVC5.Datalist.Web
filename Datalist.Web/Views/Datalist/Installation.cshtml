@@ -50,17 +50,17 @@
             <p>
                 <code>
                     <span style="color: #000000">
-                        <span class="kwrd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">AbstractDatalist</span> datalist, <span class="cls">DatalistFilter</span> filter)</br>
-                        {</br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;datalist.CurrentFilter = filter;</br>
-                        </br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwrd">return</span> Json(datalist.GetData(), <span class="cls">JsonRequestBehavior</span>.AllowGet);</br>
-                        }</br>
-                        </br>
-                        <span class="kwrd">public</span> <span class="cls">JsonResult</span> YourMethod(<span class="cls">DatalistFilter </span> filter)</br>
-                        {</br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwrd">return</span> GetData(<span class="kwrd">new</span> <span class="cls">YourDatalist</span>(), filter);</br>
-                        }</br>
+                        <span class="kwrd">private</span> <span class="cls">JsonResult</span> GetData(<span class="cls">AbstractDatalist</span> datalist, <span class="cls">DatalistFilter</span> filter)<br>
+                        {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;datalist.CurrentFilter = filter;<br>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwrd">return</span> Json(datalist.GetData(), <span class="cls">JsonRequestBehavior</span>.AllowGet);<br>
+                        }<br>
+                        <br>
+                        <span class="kwrd">public</span> <span class="cls">JsonResult</span> YourMethod(<span class="cls">DatalistFilter </span> filter)<br>
+                        {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="kwrd">return</span> GetData(<span class="kwrd">new</span> <span class="cls">YourDatalist</span>(), filter);<br>
+                        }<br>
                     </span>
                 </code>
             </p>
@@ -70,8 +70,8 @@
         <div class="html-code">
             <p>
                 <code>
-                    <span class="esc" style="color: #000000">@@</span><span style="color: #000000">Html.DatalistFor(model => model.SampleId)</span></br>
-                    <span class="esc" style="color: #000000">@@</span><span style="color: #000000">Html.Datalist(</span><span class="str">"SampleId"</span><span style="color: #000000">, </span><span class="kwrd">new</span> <span class="cls">YourDatalist</span><span style="color: #000000">())</span></br>
+                    <span class="esc" style="color: #000000">@@</span><span style="color: #000000">Html.DatalistFor(model => model.SampleId)</span><br>
+                    <span class="esc" style="color: #000000">@@</span><span style="color: #000000">Html.Datalist(</span><span class="str">"SampleId"</span><span style="color: #000000">, </span><span class="kwrd">new</span> <span class="cls">YourDatalist</span><span style="color: #000000">())</span><br>
                     <span class="esc" style="color: #000000">@@</span><span style="color: #000000">Html.DatalistFor(model => model.SampleId, </span><span class="kwrd">new</span> <span class="cls">YourDatalist</span><span style="color: #000000">())</span>
                 </code>
             </p>
