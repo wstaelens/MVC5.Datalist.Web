@@ -1,5 +1,5 @@
 ﻿/*!
- * Datalist 3.5.0
+ * Datalist 3.6.0
  * https://github.com/NonFactors/MVC5.Datalist
  *
  * Copyright © NonFactors
@@ -78,11 +78,12 @@
                     that._select(selection.item.item, false);
                     e.preventDefault();
                 },
-                minLength: 1
+                minLength: 1,
+                delay: 500
             });
 
             this.element.on('keyup.datalist', function (e) {
-                if (e.which != 9 && this.value.length == 0) {
+                if (e.which != 9 && this.value.length == 0 && $(that.options.hiddenElement).val()) {
                     that._select(null, false);
                 }
             });
@@ -91,7 +92,6 @@
         _initDatalistOpenSpan: function () {
             var datalistAddon = this.element.nextAll('.datalist-open-span:first');
             if (datalistAddon.length != 0) {
-                var datalist = $('#Datalist');
                 var that = this;
 
                 this._on(datalistAddon, {
@@ -422,6 +422,7 @@
     $(function () {
         datalist.find('.datalist-items-per-page').spinner({ min: 1, max: 99 });
         datalist.dialog({
+            dialogClass: 'datalist-dialog',
             autoOpen: false,
             minHeight: 210,
             height: 'auto',

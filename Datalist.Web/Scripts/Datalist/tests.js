@@ -108,7 +108,7 @@ QUnit.testDone(function (details) {
 asyncTest('Datalist init on document ready', 1, function () {
     setTimeout(function () {
         start();
-    }, 300);
+    }, 1000);
 
     ok(testInput.data('mvc-datalist'));
 });
@@ -123,7 +123,8 @@ test('Datalist spinner init', 3, function () {
     equal(datalistSpinner.spinner('option', 'min'), 1);
     equal(datalistSpinner.spinner('option', 'max'), 99);
 });
-test('Datalist dialog init', 7, function () {
+test('Datalist dialog init', 8, function () {
+    equal(testDatalist.dialog('option', 'dialogClass'), 'datalist-dialog');
     equal(testDatalist.dialog('option', 'autoOpen'), false);
     equal(testDatalist.dialog('option', 'minHeight'), 210);
     equal(testDatalist.dialog('option', 'height'), 'auto');
@@ -228,13 +229,18 @@ test('Initializes autocomplete select', 5, function () {
     equal(testInput.val(), 'My own value');
     equal(hiddenInput.val(), 'My own hidden value');
 });
-test('Initializes keyup on autocomplete', 2, function () {
+asyncTest('Initializes keyup on autocomplete', 2, function () {
     testInput.datalist().data('mvc-datalist')._select = function (data, firstLoad) {
         equal(firstLoad, false);
         equal(data, null);
     };
 
+    hiddenInput.val('Test');
     testInput.keyup();
+
+    setTimeout(function () {
+        start();
+    }, 1000);
 });
 test('On tab keyup does not select', 0, function () {
     testInput.datalist().data('mvc-datalist')._select = function (data, firstLoad) {
