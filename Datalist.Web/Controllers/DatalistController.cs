@@ -1,61 +1,60 @@
-﻿using Datalist.Web.Datalists;
+﻿using System.Web.Mvc;
 using System;
-using System.Web.Mvc;
-using System.Web.SessionState;
 
 namespace Datalist.Web.Controllers
 {
-    [SessionState(SessionStateBehavior.ReadOnly)]
     public class DatalistController : Controller
     {
-        private JsonResult GetData(AbstractDatalist datalist, DatalistFilter filter)
-        {
-            datalist.CurrentFilter = filter;
-
-            return Json(datalist.GetData(), JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult Default(DatalistFilter filter)
-        {
-            return GetData(new DefaultDatalist(), filter);
-        }
-        public JsonResult Data(DatalistFilter filter)
-        {
-            return GetData(new DatalistDataDatalist(), filter);
-        }
-        public JsonResult DifferentUrlExample(DatalistFilter filter, String AdditionalFilterId)
-        {
-            filter.AdditionalFilters.Add("Id", AdditionalFilterId);
-
-            return GetData(new ExampleDatalist(), filter);
-        }
-
         [HttpGet]
-        public ActionResult Home()
+        public ViewResult Title()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult Installation()
+        public ViewResult SourceUrl()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult Examples()
+        public ViewResult Localization()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult API()
+        public ViewResult HiddenData()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult Tests()
+        public ViewResult AdditionalFilters()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult DefaultSortOrder()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult DefaultSortColumn()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult DefaultRows()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult Autocomplete()
         {
             return View();
         }

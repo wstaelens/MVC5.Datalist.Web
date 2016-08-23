@@ -1,50 +1,98 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<!doctype html>
+<html>
 <head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8" />
     <link rel="shortcut icon" href="javascript:void" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Datalist controls for ASP.NET MVC projects.">
+    <title>@ViewBag.Title</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
     @Styles.Render("~/Content/JQueryUI/Bundle")
     @Styles.Render("~/Content/Bootstrap/Bundle")
-    @Styles.Render("~/Content/Datalist/Bundle")
-    @Styles.Render("~/Content/QUnit/Bundle")
+    @Styles.Render("~/Content/FontAwesome/Bundle")
+    @Styles.Render("~/Content/MvcDatalist/Bundle")
     @Styles.Render("~/Content/Shared/Bundle")
 </head>
-
-<body>
-    <a href="https://github.com/NonFactors/MVC.Datalist">
-        <img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1040;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png">
-    </a>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">Datalist</a>
+<body class="container-fluid">
+    @Html.Partial("MvcDatalist/_Dialog")
+    <div class="row">
+        <div class="col-md-2">
+            <div class="sidebar logo">
+                <a href="https://github.com/NonFactors/MVC5.Datalist">
+                    <img src="@Url.Content("~/Images/github.png")" />
+                </a>
             </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
-                <ul class="nav navbar-nav">
-                    <li><a href="/Datalist/Installation">Installation</a></li>
-                    <li><a href="/Datalist/Examples">Examples</a></li>
-                    <li><a href="/Datalist/API">API</a></li>
+            <div class="sidebar-search content-block">
+                @Html.TextBox("SearchInput", null, new { placeholder = "Search..." })
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Quick start", "Index", "Home")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Installation", "Installation", "Home")
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Datalist source url", "SourceUrl", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist dialog title", "Title", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist localization", "Localization", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist hidden data", "HiddenData", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist additional filters", "AdditionalFilters", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist default sort order", "DefaultSortOrder", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist default sort column", "DefaultSortColumn", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist default rows per page", "DefaultRows", "Datalist")
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Datalist column header", "Header", "Column")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist column css class", "CssClass", "Column")
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Custom autocomplete value", "Autocomplete", "Datalist")
+                    </li>
                 </ul>
             </div>
         </div>
+        <div class="col-md-10 content">
+            @RenderBody()
+        </div>
     </div>
-    <div class="container">
-        @RenderBody()
-        @Html.Partial("_Datalist")
-    </div>
+
     @Scripts.Render("~/Scripts/JQuery/Bundle")
     @Scripts.Render("~/Scripts/JQueryUI/Bundle")
-    @Scripts.Render("~/Scripts/Datalist/Bundle")
-    @if (ViewContext.RouteData.Values["controller"].ToString() == "Datalist" && ViewContext.RouteData.Values["action"].ToString() == "Tests")
-    {
-        @Scripts.Render("~/Scripts/QUnit/Bundle")
-        <script src="/Scripts/Datalist/tests.js"></script>
-    }
-
+    @Scripts.Render("~/Scripts/MvcDatalist/Bundle")
+    @Scripts.Render("~/Scripts/Shared/Bundle")
     @RenderSection("scripts", false)
 </body>
 </html>

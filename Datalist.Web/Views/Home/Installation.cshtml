@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "MVC.Datalist installation";
+}
+
+<div class="docs content-block">
+    <div class="widget">
+        <div class="widget-header">
+            <i class="fa fa-bars"></i>
+            Installation
+            <span class="widget-buttons">
+                <i class="content-toggle"></i>
+            </span>
+        </div>
+        <div class="widget-content">
+            <p>
+                Install MVC.Datalist package from nuget.
+            </p>
+            <pre>> Install-Package Datalist</pre>
+            <p>
+                Include datalist styling sheet.
+            </p>
+            <pre>
+&lt;link href="~/Content/bootstrap.css" rel="stylesheet" /&gt;
+&lt;link href="~/Content/jquery-ui.css" rel="stylesheet" /&gt;
+&lt;link href="~/Content/MvcDatalist/mvc-datalist.css" rel="stylesheet" /&gt;</pre>
+            <p>
+                Include datalist scripts after jQuery scripts.
+            </p>
+            <pre>
+&lt;script src="~/Scripts/jquery.js" /&gt;
+&lt;script src="~/Scripts/jquery-ui.js" /&gt;
+&lt;script src="~/Scripts/MvcDatalist/mvc-datalist.js" /&gt;</pre>
+            <p>
+                Render datalist dialog's partial in layout page.
+            </p>
+            <pre>@@Html.Partial("MvcDatalist/_Dialog")</pre>
+        </div>
+    </div>
+</div>

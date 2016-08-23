@@ -10,21 +10,9 @@ namespace Datalist.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "Datalist",
+                "Default",
                 "{controller}/{action}",
-                new { controller = "Datalist", action = "Home" },
-                new { controller = "Datalist" }
-            );
-
-            routes.MapRoute(
-                "Datalist/API",
-                "Datalist/{controller}/{action}",
-                new { controller = "API", action = "AbstractDatalist" }
-            );
-
-            routes.MapRoute(
-                "Datalist/API/Classes",
-                "Datalist/API/{controller}/{action}"
+                new { controller = "Home", action = "Index" }
             );
         }
     }

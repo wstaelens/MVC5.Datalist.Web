@@ -9,6 +9,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2662FB44-53F3-4DAB-9832-ED766138FDAF}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <AllowedReferenceRelatedFileExtensions>.pdb</AllowedReferenceRelatedFileExtensions>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Datalist.Web</RootNamespace>
@@ -45,8 +46,8 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Datalist, Version=3.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Datalist.Core.3.6.1\lib\net45\Datalist.dll</HintPath>
+    <Reference Include="Datalist, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Datalist.Core.4.0.0\lib\net45\Datalist.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -98,10 +99,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Bootstrap\bootstrap.css" />
-    <Content Include="Content\Datalist\datalist.css" />
+    <Content Include="Content\MvcDatalist\mvc-datalist.css" />
+    <Content Include="Content\FontAwesome\font-awesome.css" />
+    <Content Include="Content\FontAwesome\Fonts\fontawesome-webfont.svg" />
     <Content Include="Content\JQueryUI\jquery-ui.css" />
-    <Content Include="Content\qunit.css" />
-    <Content Include="Content\site.css" />
+    <Content Include="Content\Shared\base.css" />
+    <Content Include="Images\background.jpg" />
+    <Content Include="Images\github.png" />
     <Content Include="Images\JQueryUI\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Images\JQueryUI\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Images\JQueryUI\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -117,49 +121,33 @@
     <Content Include="Images\JQueryUI\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js">
-      <DependentUpon>bootstrap.js</DependentUpon>
+    <Content Include="Scripts\Bootstrap\bootstrap.js" />
+    <Content Include="Scripts\Bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\MvcDatalist\mvc-datalist.js" />
+    <Content Include="Scripts\JQueryUI\jquery-ui.js" />
+    <Content Include="Scripts\JQueryUI\jquery-ui.min.js" />
+    <Content Include="Scripts\JQuery\jquery.js" />
+    <Content Include="Scripts\JQuery\jquery.min.js" />
+    <Content Include="Scripts\MvcDatalist\mvc-datalist.min.js">
+      <DependentUpon>mvc-datalist.js</DependentUpon>
     </Content>
-    <Content Include="Scripts\Datalist\datalist.js" />
-    <Content Include="Scripts\Datalist\datalist.min.js">
-      <DependentUpon>datalist.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\Datalist\tests.js" />
-    <Content Include="Scripts\jquery-2.2.1.js" />
-    <Content Include="Scripts\jquery-2.2.1.min.js">
-      <DependentUpon>jquery-2.2.1.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery-ui-1.11.4.js" />
-    <Content Include="Scripts\jquery-ui-1.11.4.min.js">
-      <DependentUpon>jquery-ui-1.11.4.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\qunit.js" />
+    <Content Include="Scripts\Shared\site.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Context\UserRepository.cs" />
-    <Compile Include="Controllers\API\AbstractDatalistController.cs" />
-    <Compile Include="Controllers\API\APIController.cs" />
-    <Compile Include="Controllers\API\DatalistColumnsController.cs" />
-    <Compile Include="Controllers\API\DatalistColumnController.cs" />
-    <Compile Include="Controllers\API\DatalistAttributeController.cs" />
-    <Compile Include="Controllers\API\DatalistColumnAttributeController.cs" />
-    <Compile Include="Controllers\API\DatalistDataController.cs" />
-    <Compile Include="Controllers\API\DatalistExtensionsController.cs" />
-    <Compile Include="Controllers\API\DatalistFilterController.cs" />
-    <Compile Include="Controllers\API\DatalistSortOrderController.cs" />
-    <Compile Include="Controllers\API\GenericDatalistController.cs" />
-    <Compile Include="Controllers\API\JavascriptController.cs" />
+    <Compile Include="Context\PeopleRepository.cs" />
+    <Compile Include="Controllers\ColumnController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\DatalistController.cs" />
-    <Compile Include="Datalists\DatalistDataDatalist.cs" />
-    <Compile Include="Datalists\DefaultDatalist.cs" />
-    <Compile Include="Datalists\ExampleDatalist.cs" />
+    <Compile Include="Controllers\MvcAutocompleteController.cs" />
+    <Compile Include="Controllers\MvcDatalistController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Datalists\PeopleAutocomplete.cs" />
+    <Compile Include="Datalists\PeopleDatalist.cs" />
     <Compile Include="Models\AccountModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,87 +157,28 @@
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Javascript\FilterChange.cshtml" />
-    <Content Include="Views\Javascript\Select.cshtml" />
-    <Content Include="Views\GenericDatalist\AddAdditionalData.cshtml" />
-    <Content Include="Views\GenericDatalist\AddAutocomplete.cshtml" />
-    <Content Include="Views\GenericDatalist\AddColumns.cshtml" />
-    <Content Include="Views\GenericDatalist\AddId.cshtml" />
-    <Content Include="Views\GenericDatalist\AdditionalFilters.cshtml" />
-    <Content Include="Views\GenericDatalist\AttributedProperties.cshtml" />
-    <Content Include="Views\GenericDatalist\Columns.cshtml" />
-    <Content Include="Views\GenericDatalist\DefaultSortColumn.cshtml" />
-    <Content Include="Views\GenericDatalist\DefaultSortOrder.cshtml" />
-    <Content Include="Views\GenericDatalist\FilterByAdditionalFilters.cshtml" />
-    <Content Include="Views\GenericDatalist\FilterById.cshtml" />
-    <Content Include="Views\GenericDatalist\FilterBySearchTerm.cshtml" />
-    <Content Include="Views\GenericDatalist\FormDatalistData.cshtml" />
-    <Content Include="Views\GenericDatalist\GetColumnHeader.cshtml" />
-    <Content Include="Views\GenericDatalist\GetColumnKey.cshtml" />
-    <Content Include="Views\GenericDatalist\GetData.cshtml" />
-    <Content Include="Views\GenericDatalist\GetModels.cshtml" />
-    <Content Include="Views\GenericDatalist\Prefix.cshtml" />
-    <Content Include="Views\GenericDatalist\Sort.cshtml" />
-    <Content Include="Views\DatalistSortOrder\Asc.cshtml" />
-    <Content Include="Views\DatalistSortOrder\Desc.cshtml" />
-    <Content Include="Views\DatalistFilter\AdditionalFilters.cshtml" />
-    <Content Include="Views\DatalistFilter\Id.cshtml" />
-    <Content Include="Views\DatalistFilter\Page.cshtml" />
-    <Content Include="Views\DatalistFilter\RecordsPerPage.cshtml" />
-    <Content Include="Views\DatalistFilter\SearchTerm.cshtml" />
-    <Content Include="Views\DatalistFilter\SortColumn.cshtml" />
-    <Content Include="Views\DatalistFilter\SortOrder.cshtml" />
-    <Content Include="Views\DatalistExtensions\Autocomplete.cshtml" />
-    <Content Include="Views\DatalistExtensions\AutocompleteFor.cshtml" />
-    <Content Include="Views\DatalistExtensions\Datalist.cshtml" />
-    <Content Include="Views\DatalistExtensions\DatalistFor.cshtml" />
-    <Content Include="Views\DatalistData\Columns.cshtml" />
-    <Content Include="Views\DatalistData\FilteredRecords.cshtml" />
-    <Content Include="Views\DatalistData\Rows.cshtml" />
-    <Content Include="Views\DatalistColumnAttribute\Position.cshtml" />
-    <Content Include="Views\DatalistColumnAttribute\Relation.cshtml" />
-    <Content Include="Views\DatalistAttribute\Type.cshtml" />
-    <Content Include="Views\Datalist\API.cshtml" />
-    <Content Include="Views\Datalist\Examples.cshtml" />
-    <Content Include="Views\Datalist\Home.cshtml" />
-    <Content Include="Views\Datalist\Installation.cshtml" />
-    <Content Include="Views\API\AbstractDatalist.cshtml" />
-    <Content Include="Views\API\DatalistAttribute.cshtml" />
-    <Content Include="Views\API\DatalistColumnAttribute.cshtml" />
-    <Content Include="Views\API\DatalistData.cshtml" />
-    <Content Include="Views\API\DatalistExtensions.cshtml" />
-    <Content Include="Views\API\DatalistFilter.cshtml" />
-    <Content Include="Views\API\DatalistSortOrder.cshtml" />
-    <Content Include="Views\API\GenericDatalist.cshtml" />
-    <Content Include="Views\AbstractDatalist\AcKey.cshtml" />
-    <Content Include="Views\AbstractDatalist\AdditionalFilters.cshtml" />
-    <Content Include="Views\AbstractDatalist\Columns.cshtml" />
-    <Content Include="Views\AbstractDatalist\CurrentFilter.cshtml" />
-    <Content Include="Views\AbstractDatalist\DatalistUrl.cshtml" />
-    <Content Include="Views\AbstractDatalist\DefaultRecordsPerPage.cshtml" />
-    <Content Include="Views\AbstractDatalist\DefaultSortColumn.cshtml" />
-    <Content Include="Views\AbstractDatalist\DefaultSortOrder.cshtml" />
-    <Content Include="Views\AbstractDatalist\DialogTitle.cshtml" />
-    <Content Include="Views\AbstractDatalist\GetData.cshtml" />
-    <Content Include="Views\AbstractDatalist\IdKey.cshtml" />
-    <Content Include="Views\AbstractDatalist\Prefix.cshtml" />
-    <Content Include="Views\Datalist\Tests.cshtml" />
-    <Content Include="Views\DatalistColumnAttribute\Format.cshtml" />
-    <Content Include="Views\GenericDatalist\GetColumnCssClass.cshtml" />
-    <Content Include="Views\API\DatalistColumns.cshtml" />
-    <Content Include="Views\API\DatalistColumn.cshtml" />
-    <Content Include="Views\DatalistColumn\Key.cshtml" />
-    <Content Include="Views\DatalistColumn\CssClass.cshtml" />
-    <Content Include="Views\DatalistColumn\Header.cshtml" />
-    <Content Include="Views\DatalistColumns\Keys.cshtml" />
-    <Content Include="Views\DatalistColumns\Remove.cshtml" />
-    <Content Include="Views\DatalistColumns\Add.cshtml" />
-    <Content Include="Views\DatalistColumns\Clear.cshtml" />
     <Content Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Content\Bootstrap\Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Views\Shared\_Datalist.cshtml" />
+    <Content Include="Content\FontAwesome\Fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\FontAwesome\Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\FontAwesome\Fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\FontAwesome\Fonts\FontAwesome.otf" />
+    <Content Include="Views\Column\CssClass.cshtml" />
+    <Content Include="Views\Column\Header.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Installation.cshtml" />
+    <Content Include="Views\Datalist\AdditionalFilters.cshtml" />
+    <Content Include="Views\Datalist\Autocomplete.cshtml" />
+    <Content Include="Views\Datalist\DefaultRows.cshtml" />
+    <Content Include="Views\Datalist\DefaultSortColumn.cshtml" />
+    <Content Include="Views\Datalist\DefaultSortOrder.cshtml" />
+    <Content Include="Views\Datalist\HiddenData.cshtml" />
+    <Content Include="Views\Datalist\Localization.cshtml" />
+    <Content Include="Views\Datalist\SourceUrl.cshtml" />
+    <Content Include="Views\Datalist\Title.cshtml" />
+    <Content Include="Views\Shared\MvcDatalist\_Dialog.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -11,18 +11,18 @@ namespace Datalist.Web
         }
         private static void RegisterScripts(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/Scripts/JQueryUI/Bundle").Include("~/Scripts/jquery-ui-{version}.js"));
-            bundles.Add(new ScriptBundle("~/Scripts/Datalist/Bundle").Include("~/Scripts/Datalist/datalist.js"));
-            bundles.Add(new ScriptBundle("~/Scripts/JQuery/Bundle").Include("~/Scripts/jquery-{version}.js"));
-            bundles.Add(new ScriptBundle("~/Scripts/QUnit/Bundle").Include("~/Scripts/qunit.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/MvcDatalist/Bundle").Include("~/Scripts/MvcDatalist/*.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/JQueryUI/Bundle").Include("~/Scripts/JQueryUI/*.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/JQuery/Bundle").Include("~/Scripts/JQuery/*.js"));
+            bundles.Add(new ScriptBundle("~/Scripts/Shared/Bundle").Include("~/Scripts/Shared/*.js"));
         }
         private static void RegisterStyles(BundleCollection bundles)
         {
+            bundles.Add(new StyleBundle("~/Content/MvcDatalist/Bundle").Include("~/Content/MvcDatalist/*.css"));
+            bundles.Add(new StyleBundle("~/Content/FontAwesome/Bundle").Include("~/Content/FontAwesome/*.css"));
             bundles.Add(new StyleBundle("~/Content/Bootstrap/Bundle").Include("~/Content/Bootstrap/*.css"));
             bundles.Add(new StyleBundle("~/Content/JQueryUI/Bundle").Include("~/Content/JQueryUI/*.css"));
-            bundles.Add(new StyleBundle("~/Content/Datalist/Bundle").Include("~/Content/Datalist/*.css"));
-            bundles.Add(new StyleBundle("~/Content/QUnit/Bundle").Include("~/Content/qunit.css"));
-            bundles.Add(new StyleBundle("~/Content/Shared/Bundle").Include("~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/Shared/Bundle").Include("~/Content/Shared/*.css"));
         }
     }
 }
