@@ -101,7 +101,7 @@
 <code>
 <span class="kwd">public class</span> <span class="cls">HomeController</span> : <span class="cls">Controller</span>
 {
-    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
+    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
     <span class="kwd">public</span> HomeController(<span class="cls">DbContext</span> context)
     {    
@@ -142,7 +142,7 @@
 <code>
 <span class="kwd">public class</span> <span class="cls">PeopleDatalist</span> : <span class="cls">MvcDatalist</span>&lt;<span class="cls">PersonModel</span>&gt;
 {
-    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
+    <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; <span class="kwd">set</span>; }
 
     <span class="kwd">public</span> PeopleDatalist(<span class="cls">DbContext</span> context)
     {
