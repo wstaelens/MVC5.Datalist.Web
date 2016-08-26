@@ -46,16 +46,16 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Datalist, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Datalist.Core.4.0.0\lib\net45\Datalist.dll</HintPath>
+    <Reference Include="Datalist, Version=4.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Datalist.Core.4.1.0\lib\net45\Datalist.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -106,8 +106,6 @@
     <Content Include="Content\Shared\base.css" />
     <Content Include="Images\background.jpg" />
     <Content Include="Images\github.png" />
-    <Content Include="Images\JQueryUI\ui-bg_flat_0_aaaaaa_40x100.png" />
-    <Content Include="Images\JQueryUI\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Images\JQueryUI\ui-bg_glass_55_fbf9ee_1x400.png" />
     <Content Include="Images\JQueryUI\ui-bg_glass_65_ffffff_1x400.png" />
     <Content Include="Images\JQueryUI\ui-bg_glass_75_dadada_1x400.png" />
