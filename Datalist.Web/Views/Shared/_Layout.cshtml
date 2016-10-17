@@ -9,12 +9,7 @@
     <title>@ViewBag.Title</title>
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-
-    @Styles.Render("~/Content/JQueryUI/Bundle")
-    @Styles.Render("~/Content/Bootstrap/Bundle")
-    @Styles.Render("~/Content/FontAwesome/Bundle")
-    @Styles.Render("~/Content/MvcDatalist/Bundle")
-    @Styles.Render("~/Content/Shared/Bundle")
+    @Styles.Render("~/content/page/bundle")
 </head>
 <body class="container-fluid">
     @Html.Partial("MvcDatalist/_Dialog")
@@ -89,10 +84,7 @@
         </div>
     </div>
 
-    @Scripts.Render("~/Scripts/JQuery/Bundle")
-    @Scripts.Render("~/Scripts/JQueryUI/Bundle")
-    @Scripts.Render("~/Scripts/MvcDatalist/Bundle")
-    @Scripts.Render("~/Scripts/Shared/Bundle")
+    @Scripts.Render("~/scripts/page/bundle")
     @RenderSection("scripts", false)
 </body>
 </html>
