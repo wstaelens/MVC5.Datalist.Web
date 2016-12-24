@@ -25,7 +25,7 @@ namespace Datalist.Web.Datalists
         public override void AddData(Dictionary<String, String> row, PersonModel model)
         {
             base.AddData(row, model);
-            
+
             if (model.IsWorking == true)
                 row.Add("IsWorking", "Person is employed");
             else if (model.IsWorking == false)

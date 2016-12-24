@@ -21,7 +21,7 @@ namespace Datalist.Web.Datalists
         {
             return PeopleRepository.GetPeople();
         }
-        
+
         public override void AddAutocomplete(Dictionary<String, String> row, PersonModel model)
         {
             row.Add(AcKey, model.Name + " " + model.Surname);
