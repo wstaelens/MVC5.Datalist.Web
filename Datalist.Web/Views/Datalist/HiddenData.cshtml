@@ -69,9 +69,9 @@
 @@Html.AutocompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>())
 
 $(<span class="str">'.datalist-input'</span>).datalist({
-    select: <span class="kwrd">function</span> (event, element, hiddenElement, data) {    
-        $(<span class="str">'#AdditionalIsWorking'</span>).val(data[<span class="str">'IsWorking'</span>]);
-        $(<span class="str">'#HiddenId'</span>).val(data[<span class="str">'Id'</span>]);    
+    select: <span class="kwd">function</span> (event, element, hiddenElement, data) {
+        $(<span class="str">'#AdditionalIsWorking'</span>).val(data ? data[<span class="str">'IsWorking'</span>] : <span class="str">''</span>);
+        $(<span class="str">'#HiddenId'</span>).val(data ? data[<span class="str">'Id'</span>] : <span class="str">''</span>);
     }
 });
 </code>
@@ -102,9 +102,9 @@ $(<span class="str">'.datalist-input'</span>).datalist({
 @@Html.DatalistFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>())
 
 $(<span class="str">'.datalist-input'</span>).datalist({
-    select: <span class="kwrd">function</span> (event, element, hiddenElement, data) {    
-        $(<span class="str">'#AdditionalIsWorking'</span>).val(data[<span class="str">'IsWorking'</span>]);
-        $(<span class="str">'#HiddenId'</span>).val(data[<span class="str">'Id'</span>]);  
+    select: <span class="kwd">function</span> (event, element, hiddenElement, data) {
+        $(<span class="str">'#AdditionalIsWorking'</span>).val(data ? data[<span class="str">'IsWorking'</span>] : <span class="str">''</span>);
+        $(<span class="str">'#HiddenId'</span>).val(data ? data[<span class="str">'Id'</span>] : <span class="str">''</span>);
     }
 });
 </code>
@@ -231,14 +231,14 @@ $(<span class="str">'.datalist-input'</span>).datalist({
 <script>
     $($('.datalist-input')[0]).datalist({
         select: function (event, element, hiddenElement, data) {
-            $('#AdditionalAutocompleteWorkingData').val(data['IsWorking']);
-            $('#HiddenAutocompleteId').val(data['Id']);
+            $('#AdditionalAutocompleteWorkingData').val(data ? data['IsWorking'] : '');
+            $('#HiddenAutocompleteId').val(data ? data['Id'] : '');
         }
     });
     $($('.datalist-input')[1]).datalist({
         select: function (event, element, hiddenElement, data) {
-            $('#AdditionalDatalistWorkingData').val(data['IsWorking']);
-            $('#HiddenDatalistId').val(data['Id']);
+            $('#AdditionalDatalistWorkingData').val(data ? data['IsWorking'] : '');
+            $('#HiddenDatalistId').val(data ? data['Id'] : '');
         }
     });
 </script>
