@@ -6,6 +6,6 @@ Official [MVC.Datalist](http://mvc-datalist.azurewebsites.net/) website, used fo
 ![License](https://img.shields.io/badge/license-MIT-green.svg?style=plastic)
 
 # Contribution
-- Questions or anything conserning MVC.Datalist web/docs should be reported at this repository.
+- Questions or anything conserning MVC.Datalist usage or documentation should be reported at this repository.
 - Before you start writing a pull request you should discuss it using GitHub issues.
 - Features, improvements and bugs should be reported at [Datalist repository](https://github.com/NonFactors/MVC5.Datalist).
