@@ -10,7 +10,7 @@ namespace Datalist.Web.Controllers
         {
             filter.AdditionalFilters.Add("Age", datalistAge);
 
-            return Json(new PeopleDatalist() { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
+            return Json(new PeopleDatalist { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
         }
     }
 }

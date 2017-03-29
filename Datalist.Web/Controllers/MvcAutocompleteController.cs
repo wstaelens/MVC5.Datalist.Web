@@ -10,7 +10,7 @@ namespace Datalist.Web.Controllers
         {
             filter.AdditionalFilters.Add("Age", autocompleteAge);
 
-            return Json(new PeopleAutocomplete() { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
+            return Json(new PeopleAutocomplete { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
         }
     }
 }

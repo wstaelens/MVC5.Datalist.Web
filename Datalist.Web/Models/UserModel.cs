@@ -1,5 +1,4 @@
-﻿using Datalist;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Datalist.Web.Models
