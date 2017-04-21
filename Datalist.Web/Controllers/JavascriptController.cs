@@ -3,28 +3,28 @@ using System.Web.Mvc;
 
 namespace Datalist.Web.Controllers
 {
-    public class ColumnController : Controller
+    public class JavascriptController : Controller
     {
         [HttpGet]
-        public ViewResult Key()
+        public ViewResult Reload()
         {
             return View();
         }
 
         [HttpGet]
-        public ViewResult Header()
+        public ViewResult Select()
         {
             return View();
         }
 
         [HttpGet]
-        public ViewResult Position()
+        public ViewResult Readonly()
         {
             return View();
         }
 
         [HttpGet]
-        public ViewResult CssClass()
+        public ViewResult FilterChange()
         {
             return View();
         }

@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using Datalist.Web.Datalists;
+using System.Web.Mvc;
 
 namespace Datalist.Web.Controllers
 {
@@ -14,6 +15,13 @@ namespace Datalist.Web.Controllers
         public ActionResult Installation()
         {
             return View();
+        }
+
+
+        [HttpGet]
+        public JsonResult AllPeople(DatalistFilter filter)
+        {
+            return Json(new PeopleDatalist { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
         }
     }
 }

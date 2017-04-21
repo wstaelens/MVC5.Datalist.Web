@@ -49,33 +49,65 @@
                         @Html.ActionLink("Datalist hidden data", "HiddenData", "Datalist")
                     </li>
                     <li>
+                        @Html.ActionLink("Datalist multi selection", "Multi", "Datalist")
+                    </li>
+                    <li>
                         @Html.ActionLink("Datalist additional filters", "AdditionalFilters", "Datalist")
                     </li>
                     <li>
-                        @Html.ActionLink("Datalist default sort order", "DefaultSortOrder", "Datalist")
+                        @Html.ActionLink("Datalist initial sort options", "SortOptions", "Datalist")
                     </li>
                     <li>
-                        @Html.ActionLink("Datalist default sort column", "DefaultSortColumn", "Datalist")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Datalist default rows per page", "DefaultRows", "Datalist")
+                        @Html.ActionLink("Datalist initial paging options", "PagingOptions", "Datalist")
                     </li>
                 </ul>
             </div>
             <div class="sidebar content-block">
                 <ul>
                     <li>
-                        @Html.ActionLink("Datalist column header", "Header", "Column")
+                        @Html.ActionLink("Datalist id value", "Id", "Datalist")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist autocomplete value", "Autocomplete", "Datalist")
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Datalist column key", "Key", "Column")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist column position", "Position", "Column")
                     </li>
                     <li>
                         @Html.ActionLink("Datalist column css class", "CssClass", "Column")
                     </li>
+                    <li>
+                        @Html.ActionLink("Datalist column header title", "Header", "Column")
+                    </li>
                 </ul>
             </div>
             <div class="sidebar content-block">
                 <ul>
                     <li>
-                        @Html.ActionLink("Custom autocomplete value", "Autocomplete", "Datalist")
+                        @Html.ActionLink("Datalist reload", "Reload", "Javascript")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Datalist readonly", "Readonly", "Javascript")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Binding select event", "Select", "Javascript")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Binding filter change event", "FilterChange", "Javascript")
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebar content-block">
+                <ul>
+                    <li>
+                        @Html.ActionLink("Datalist configuration", "Configuration", "Datalist")
                     </li>
                 </ul>
             </div>

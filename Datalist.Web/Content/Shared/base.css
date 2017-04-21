@@ -136,7 +136,7 @@ pre {
 }
 
     pre code .com {
-        color: #05B305;
+        color: #118411;
     }
 
     pre code .cls {
@@ -151,7 +151,7 @@ pre {
         color: #CC6500;
     }
 
-.datalist-table thead > tr > th {
+.datalist-dialog thead > tr > th {
     vertical-align: middle;
     text-align: center;
 }

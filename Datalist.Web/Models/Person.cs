@@ -1,27 +1,28 @@
-﻿using System;
+﻿using Datalist.Web.Resources;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Datalist.Web.Models
 {
-    public class PersonModel
+    public class Person
     {
         [DatalistColumn(Hidden = true)]
         public Int32 Id { get; set; }
 
         [DatalistColumn]
-        [Display(Name = "Name")]
+        [Display(ResourceType = typeof(Titles), Name = "Name")]
         public String Name { get; set; }
 
         [DatalistColumn]
-        [Display(Name = "Surname")]
+        [Display(ResourceType = typeof(Titles), Name = "Surname")]
         public String Surname { get; set; }
 
         [DatalistColumn]
-        [Display(Name = "Age")]
-        public Int32 Age { get; set; }
+        [Display(ResourceType = typeof(Titles), Name = "Income")]
+        public Int32? Income { get; set; }
 
         [DatalistColumn(Format = "{0:d}")]
-        [Display(Name = "Birthday", ShortName = "Birth")]
+        [Display(ResourceType = typeof(Titles), Name = "Birthday")]
         public DateTime Birthday { get; set; }
 
         public Boolean? IsWorking { get; set; }
