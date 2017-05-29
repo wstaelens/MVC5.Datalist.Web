@@ -12,7 +12,7 @@ body {
 }
 
 .content {
-    padding-top: 30px;
+    padding-top: 10px;
 }
 
 .content-block {
@@ -109,6 +109,11 @@ body {
 .centered-content {
     text-align:center;
     min-width: 100%;
+}
+
+.docs,
+.example {
+    margin-top: 20px;
 }
 
 .docs .widget-header {
