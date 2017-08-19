@@ -12,6 +12,12 @@ namespace Datalist.Web.Controllers
         }
 
         [HttpGet]
+        public ViewResult Browse()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult Select()
         {
             return View();
