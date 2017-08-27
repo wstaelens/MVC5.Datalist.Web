@@ -20,7 +20,7 @@ namespace Datalist.Web.Context
 
                     Birthday = new DateTime(1998, 09, 05),
                     IsWorking = false,
-                    Income = 0
+                    Income = null
                 },
                 new Person
                 {
@@ -96,7 +96,7 @@ namespace Datalist.Web.Context
 
                     Birthday = new DateTime(1977, 09, 10),
                     IsWorking = false,
-                    Income = 0
+                    Income = null
                 },
                 new Person
                 {
