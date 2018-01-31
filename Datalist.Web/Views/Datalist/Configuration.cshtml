@@ -133,6 +133,7 @@
 <code>
 $(<span class="str">'.datalist'</span>).datalist({
     readonly: <span class="kwd">false</span>, <span class="com">// Datalist readonly state</span>
+    preserveSearch: <span class="kwd">true</span>, <span class="com">// Indicates if datalist dialog search value should be preserved if datalist dialog is closed</span>
     events: {
         select: <span class="kwd">function</span> (e, data, triggerChanges) {
             <span class="com">// e - datalist select event, preventing the default, prevents default datalist selection logic</span>

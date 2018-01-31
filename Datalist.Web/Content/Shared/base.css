@@ -24,14 +24,14 @@ body {
     text-align: center;
 }
 
-.logo a {
-    margin-left: 3em;
-}
+    .logo a {
+        margin-left: 3em;
+    }
 
-.logo .version {
-    vertical-align: bottom;
-    color: #FFFFFF;
-}
+    .logo .version {
+        vertical-align: bottom;
+        color: #FFFFFF;
+    }
 
 .sidebar-search {
     position: relative;
@@ -103,11 +103,11 @@ body {
         }
 
 .widget-content {
-    padding: 15px;
+    padding: 10px;
 }
 
 .centered-content {
-    text-align:center;
+    text-align: center;
     min-width: 100%;
 }
 
@@ -116,9 +116,9 @@ body {
     margin-top: 20px;
 }
 
-.docs .widget-header {
-    background: rgba(54, 52, 52, 0.67);
-}
+    .docs .widget-header {
+        background: rgba(54, 52, 52, 0.67);
+    }
 
 .output .widget-header {
     background: rgba(145, 203, 222, 0.85);
@@ -136,8 +136,13 @@ body {
         background: rgba(94, 186, 103, 0.75);
     }
 
+p {
+    margin: 10px 0;
+}
+
 pre {
     background: #FFFFFF;
+    margin: 0;
 }
 
     pre code .com {
