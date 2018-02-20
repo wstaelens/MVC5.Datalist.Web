@@ -174,7 +174,7 @@
     <Content Include="Views\Javascript\Select.cshtml" />
     <Content Include="Views\Datalist\AdditionalFilters.cshtml" />
     <Content Include="Views\Datalist\Autocomplete.cshtml" />
-    <Content Include="Views\Datalist\Configuration.cshtml" />
+    <Content Include="Views\Javascript\Api.cshtml" />
     <Content Include="Views\Datalist\HiddenData.cshtml" />
     <Content Include="Views\Datalist\Id.cshtml" />
     <Content Include="Views\Datalist\Localization.cshtml" />

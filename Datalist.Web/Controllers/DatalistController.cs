@@ -82,13 +82,6 @@ namespace Datalist.Web.Controllers
 
 
         [HttpGet]
-        public ViewResult Configuration()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
         public JsonResult AllPeople(DatalistFilter filter, Int32? autocompleteIncome, Int32? datalistIncome)
         {
             filter.AdditionalFilters["Income"] = autocompleteIncome ?? datalistIncome;

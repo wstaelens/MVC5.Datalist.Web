@@ -6,6 +6,12 @@ namespace Datalist.Web.Controllers
     public class JavascriptController : Controller
     {
         [HttpGet]
+        public ViewResult Api()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ViewResult Reload()
         {
             return View();
