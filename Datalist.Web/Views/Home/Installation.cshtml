@@ -2,24 +2,23 @@
     ViewBag.Title = "MVC.Datalist installation";
 }
 
-<div class="docs content-block">
-    <div class="widget">
-        <div class="widget-header">
-            <i class="fa fa-bars"></i>
-            Installation
-            <span class="widget-buttons">
-                <i class="content-toggle"></i>
-            </span>
+<div class="widget docs">
+    <div class="widget-header">
+        <div class="fa fa-bars"></div>
+        <span>Installation</span>
+        <div class="widget-buttons">
+            <i class="content-toggle"></i>
         </div>
-        <div class="widget-content">
-            <p>
-                Install MVC.Datalist package from nuget.
-            </p>
-            <pre>> Install-Package Datalist</pre>
-            <p>
-                Render datalist dialog's partial in layout page.
-            </p>
-            <pre>
+    </div>
+    <div class="widget-content">
+        <p>
+            Install MVC.Datalist package from nuget.
+        </p>
+        <pre>> Install-Package Datalist</pre>
+        <p>
+            Render datalist dialog's partial in layout page.
+        </p>
+        <pre>
 &lt;html&gt;
     &lt;body&gt;
         <b>@@Html.Partial("MvcDatalist/_Dialog")</b>
@@ -27,8 +26,8 @@
         @@RenderBody()
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-            <p>Include datalist stylesheet to your page.</p>
-            <pre>
+        <p>Include datalist stylesheet to your page.</p>
+        <pre>
 &lt;html&gt;
     &lt;head&gt;
         <b>&lt;link href="~/Content/MvcDatalist/mvc-datalist.css" rel="stylesheet"&gt;</b>
@@ -39,10 +38,10 @@
         @@RenderBody()
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-            <p>
-                Include datalist scripts after jQuery and jQueryUI scripts to your project and your page.
-            </p>
-            <pre>
+        <p>
+            Include datalist scripts after jQuery and jQueryUI scripts to your project and your page.
+        </p>
+        <pre>
 &lt;html&gt;
     &lt;head&gt;
         &lt;link href="~/Content/MvcDatalist/mvc-datalist.css" rel="stylesheet"&gt;
@@ -57,10 +56,10 @@
         <b>&lt;script src="~/Scripts/MvcDatalist/mvc-datalist.js"&gt;&lt;/script&gt;</b>
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-            <p>
-                Initialize MVC.Datalist instances after rendering datalist html
-            </p>
-            <pre>
+        <p>
+            Initialize MVC.Datalist instances after rendering datalist html
+        </p>
+        <pre>
 &lt;html&gt;
     &lt;head&gt;
         &lt;link href="~/Content/MvcDatalist/mvc-datalist.css" rel="stylesheet"&gt;
@@ -78,6 +77,5 @@
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-        </div>
     </div>
 </div>
