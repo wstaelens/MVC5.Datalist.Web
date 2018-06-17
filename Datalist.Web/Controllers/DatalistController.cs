@@ -32,12 +32,6 @@ namespace Datalist.Web.Controllers
         }
 
         [HttpGet]
-        public ViewResult Multi()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public ViewResult AdditionalFilters()
         {
             return View();
@@ -75,24 +69,17 @@ namespace Datalist.Web.Controllers
         }
 
         [HttpGet]
-        public ViewResult Autocomplete()
+        public ViewResult Label()
         {
             return View();
         }
 
 
         [HttpGet]
-        public JsonResult AllPeople(DatalistFilter filter, Int32? autocompleteIncome, Int32? datalistIncome)
+        public JsonResult AllPeople(DatalistFilter filter, Int32? autocompleteIncome, Int32? datalistIncome, Boolean? isWorking)
         {
+            filter.AdditionalFilters["IsWorking"] = isWorking;
             filter.AdditionalFilters["Income"] = autocompleteIncome ?? datalistIncome;
-
-            return Json(new PeopleDatalist { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
-        public JsonResult WorkingPeople(DatalistFilter filter)
-        {
-            filter.AdditionalFilters["IsWorking"] = true;
 
             return Json(new PeopleDatalist { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
         }

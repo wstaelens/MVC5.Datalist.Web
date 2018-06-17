@@ -6,12 +6,6 @@ namespace Datalist.Web.Controllers
     public class ColumnController : Controller
     {
         [HttpGet]
-        public ViewResult Key()
-        {
-            return View();
-        }
-
-        [HttpGet]
         public ViewResult Header()
         {
             return View();

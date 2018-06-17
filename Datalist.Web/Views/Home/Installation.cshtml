@@ -4,11 +4,8 @@
 
 <div class="widget docs">
     <div class="widget-header">
-        <div class="fa fa-bars"></div>
+        <div class="fa fa-info"></div>
         <span>Installation</span>
-        <div class="widget-buttons">
-            <i class="content-toggle"></i>
-        </div>
     </div>
     <div class="widget-content">
         <p>
@@ -16,21 +13,23 @@
         </p>
         <pre>> Install-Package Datalist</pre>
         <p>
-            Render datalist dialog's partial in layout page.
+            Render datalist dialog's partial in the page.
         </p>
         <pre>
 &lt;html&gt;
     &lt;body&gt;
-        <b>@@Html.Partial("MvcDatalist/_Dialog")</b>
+<b class="install-note">+       @@Html.Partial("MvcDatalist/_Dialog")</b>
 
         @@RenderBody()
     &lt;/body&gt;
 &lt;/html&gt;</pre>
-        <p>Include datalist stylesheet to your page.</p>
+        <p>
+            Include datalist stylesheet to your page.
+        </p>
         <pre>
 &lt;html&gt;
     &lt;head&gt;
-        <b>&lt;link href="~/Content/MvcDatalist/mvc-datalist.css" rel="stylesheet"&gt;</b>
+<b class="install-note">+       &lt;link href="~/Content/MvcDatalist/mvc-datalist.css" rel="stylesheet"&gt;</b>
     &lt;/head&gt;
     &lt;body&gt;
         @@Html.Partial("MvcDatalist/_Dialog")
@@ -39,7 +38,7 @@
     &lt;/body&gt;
 &lt;/html&gt;</pre>
         <p>
-            Include datalist scripts after jQuery and jQueryUI scripts to your project and your page.
+            Include datalist scripts to your page.
         </p>
         <pre>
 &lt;html&gt;
@@ -51,9 +50,7 @@
 
         @@RenderBody()
 
-        &lt;script src="~/Scripts/JQuery/jquery.js"&gt;&lt;/script&gt;
-        &lt;script src="~/Scripts/JQuery/jquery-ui.js"&gt;&lt;/script&gt;
-        <b>&lt;script src="~/Scripts/MvcDatalist/mvc-datalist.js"&gt;&lt;/script&gt;</b>
+<b class="install-note">+       &lt;script src="~/Scripts/MvcDatalist/mvc-datalist.js"&gt;&lt;/script&gt;</b>
     &lt;/body&gt;
 &lt;/html&gt;</pre>
         <p>
@@ -69,11 +66,11 @@
 
         @@RenderBody()
 
-        &lt;script src="~/Scripts/JQuery/jquery.js"&gt;&lt;/script&gt;
-        &lt;script src="~/Scripts/JQuery/jquery-ui.js"&gt;&lt;/script&gt;
         &lt;script src="~/Scripts/MvcDatalist/mvc-datalist.js"&gt;&lt;/script&gt;
         &lt;script&gt;
-            <b>$('.datalist').datalist();</b>
+<b class="install-note">+           [].forEach.call(document.getElementsByClassName('datalist'), function(element) {</b>
+<b class="install-note">+               new MvcDatalist(element);</b>
+<b class="install-note">+           });</b>
         &lt;/script&gt;
     &lt;/body&gt;
 &lt;/html&gt;</pre>

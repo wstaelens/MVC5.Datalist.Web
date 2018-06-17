@@ -1,4 +1,5 @@
 ﻿using Datalist.Web.Datalists;
+using System;
 using System.Web.Mvc;
 
 namespace Datalist.Web.Controllers
@@ -55,8 +56,11 @@ namespace Datalist.Web.Controllers
 
 
         [HttpGet]
-        public JsonResult AllPeople(DatalistFilter filter)
+        public JsonResult AllPeople(DatalistFilter filter, Int32? autocompleteIncome, Int32? datalistIncome, Boolean? isWorking)
         {
+            filter.AdditionalFilters["IsWorking"] = isWorking;
+            filter.AdditionalFilters["Income"] = autocompleteIncome ?? datalistIncome;
+
             return Json(new PeopleDatalist { Filter = filter }.GetData(), JsonRequestBehavior.AllowGet);
         }
     }

@@ -1,83 +1,70 @@
-﻿@model Person
-@{
-    ViewBag.Title = "Datalist column key";
+﻿@{
+    ViewBag.Title = "Datalist label value";
 }
 
 <div class="row">
-    <div class="widget example col">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Autocomplete</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
+            @Html.TextBox("AutocompleteLabel", null, new { @class = "form-control text-center", placeholder = "Label", @readonly = "readonly" })
+
+            <br />
+
             @Html.AutoComplete("Autocomplete", new PeopleDatalist())
         </div>
     </div>
-    <div class="widget example col">
+    <div class="widget example col-xl-6">
         <div class="widget-header">
             <div class="fa fa-bars"></div>
             <span>Datalist</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
+            @Html.TextBox("DatalistLabel", null, new { @class = "form-control text-center", placeholder = "Label", @readonly = "readonly" })
+
+            <br />
+
             @Html.Datalist("Datalist", new PeopleDatalist())
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>())
-</code>
+<code>@@Html.AutoCompleteFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>())</code>
 </pre>
         </div>
     </div>
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>View</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-@@Html.DatalistFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>())
-</code>
+<code>@@Html.DatalistFor(model => model.Id, <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>())</code>
 </pre>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>Controller</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-<span class="kwd">public class</span> <span class="cls">HomeController</span> : <span class="cls">Controller</span>
+<code><span class="kwd">public class</span> <span class="cls">HomeController</span> : <span class="cls">Controller</span>
 {
     <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
 
@@ -97,31 +84,27 @@
     {
         <span class="kwd">return</span> Json(<span class="kwd">new</span> <span class="cls">PeopleDatalist</span>(Context) { Filter = filter }.GetData());
     }
-}
-</code>
+}</code>
 </pre>
         </div>
     </div>
-    <div class="widget code col">
+    <div class="widget code col-xl-6">
         <div class="widget-header">
             <div class="fa fa-code"></div>
-            <span>PeopleDatalist</span>
-            <div class="widget-buttons">
-                <span class="fa fa-minus content-toggle"></span>
-            </div>
+            <span>Datalist</span>
         </div>
         <div class="widget-content">
 <pre>
-<code>
-<span class="kwd">public class</span> <span class="cls">PeopleDatalist</span> : <span class="cls">MvcDatalist</span>&lt;<span class="cls">Person</span>&gt;
+<code><span class="kwd">public class</span> <span class="cls">PeopleDatalist</span> : <span class="cls">MvcDatalist</span>&lt;<span class="cls">Person</span>&gt;
 {
     <span class="kwd">private</span> <span class="cls">DbContext</span> Context { <span class="kwd">get</span>; }
-    <span class="kwd">private</span> <span class="cls">Boolean</span> UsePropertyName { <span class="kwd">get</span>; }
 
     <span class="kwd">public</span> PeopleDatalist(<span class="cls">DbContext</span> context)
     {
         Context = context;
-        UsePropertyName = <span class="kwd">true</span>;
+
+        <span class="com">// Defaults to first visible column.</span>
+        GetLabel = (model) => model.Name + <span class="str">" "</span> + model.Surname;
     }
     <span class="kwd">public</span> PeopleDatalist()
     {
@@ -132,17 +115,27 @@
     {
         <span class="kwd">return</span> Context.Set&lt;<span class="cls">Person</span>&gt;();
     }
-
-    <span class="kwd">public override</span> <span class="cls">String</span> GetColumnKey(<span class="cls">PropertyInfo</span> prop)
-    {
-        <span class="kwd">if</span> (UsePropertyName)
-            <span class="kwd">return base</span>.GetColumnKey(prop);
-
-        <span class="kwd">return</span> <span class="str">"Key_"</span> + prop.Name;
-    }
-}
-</code>
+}</code>
 </pre>
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        new MvcDatalist(document.getElementById('Autocomplete'), {
+            events: {
+                select: function (data, triggerChanges) {
+                    document.getElementById('AutocompleteLabel').value = data.length ? data[0].Label : '';
+                }
+            }
+        });
+        new MvcDatalist(document.getElementById('Datalist'), {
+            events: {
+                select: function (data, triggerChanges) {
+                    document.getElementById('DatalistLabel').value = data.length ? data[0].Label : '';
+                }
+            }
+        });
+    </script>
+}

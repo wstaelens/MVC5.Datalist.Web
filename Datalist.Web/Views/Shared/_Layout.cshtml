@@ -16,7 +16,7 @@
 <body class="container-fluid">
     @Html.Partial("MvcDatalist/_Dialog")
     <div class="row">
-        <div class="sidebar col-lg-2">
+        <div class="sidebar col-xl-2">
             <div class="logo">
                 <a href="https://github.com/NonFactors/MVC5.Datalist">
                     <span class="fa fa-github">
@@ -47,9 +47,6 @@
                     @Html.ActionLink("Datalist hidden data", "HiddenData", "Datalist")
                 </li>
                 <li>
-                    @Html.ActionLink("Datalist multi selection", "Multi", "Datalist")
-                </li>
-                <li>
                     @Html.ActionLink("Datalist additional filters", "AdditionalFilters", "Datalist")
                 </li>
                 <li>
@@ -61,16 +58,13 @@
             </ul>
             <ul>
                 <li>
-                    @Html.ActionLink("Datalist id value", "Id", "Datalist")
+                    @Html.ActionLink("Datalist id", "Id", "Datalist")
                 </li>
                 <li>
-                    @Html.ActionLink("Datalist autocomplete value", "Autocomplete", "Datalist")
+                    @Html.ActionLink("Datalist label", "Label", "Datalist")
                 </li>
             </ul>
             <ul>
-                <li>
-                    @Html.ActionLink("Datalist column key", "Key", "Column")
-                </li>
                 <li>
                     @Html.ActionLink("Datalist column position", "Position", "Column")
                 </li>

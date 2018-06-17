@@ -10,11 +10,11 @@ namespace Datalist.Web.Datalists
     {
         public PeopleDatalist()
         {
-            Filter.Rows = 5;
             Title = "People";
             Url = "AllPeople";
             Filter.Sort = "Income";
             Filter.Order = DatalistSortOrder.Desc;
+            GetLabel = (model) => model.Name + " " + model.Surname;
         }
 
         public override IQueryable<Person> GetModels()
@@ -22,20 +22,18 @@ namespace Datalist.Web.Datalists
             return PeopleRepository.Get();
         }
 
-        public override void AddAutocomplete(Dictionary<String, String> row, Person model)
+        public override Dictionary<String, String> FormData(Person model)
         {
-            row[AcKey] = model.Name + " " + model.Surname;
-        }
-        public override void AddData(Dictionary<String, String> row, Person model)
-        {
-            base.AddData(row, model);
+            Dictionary<String, String> data = base.FormData(model);
 
             if (model.IsWorking == true)
-                row["IsWorking"] = "Person is employed";
+                data["IsWorking"] = "Person is employed";
             else if (model.IsWorking == false)
-                row["IsWorking"] = "Person is unemployed";
+                data["IsWorking"] = "Person is unemployed";
             else
-                row["IsWorking"] = "It's unknown is person is employed or not";
+                data["IsWorking"] = "It's unknown is person is employed or not";
+
+            return data;
         }
     }
 }
