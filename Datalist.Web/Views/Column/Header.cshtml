@@ -49,7 +49,7 @@
 </div>
 
 <div class="row">
-    <div class="widget code col-xl-4">
+    <div class="widget code col-xl-5">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>Controller</span>
@@ -74,10 +74,9 @@
     [<span class="cls">HttpGet</span>]
     <span class="kwd">public</span> <span class="cls">JsonResult</span> AllPeople(<span class="cls">DatalistFilter</span> filter)
     {
-        <span class="cls">PeopleDatalist</span> datalist = <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>(Context);
-        datalist.Filter = filter;
+        <span class="cls">PeopleDatalist</span> datalist = <span class="kwd">new</span> <span class="cls">PeopleDatalist</span>(Context) { Filter = filter };
 
-        <span class="kwd">return</span> Json(datalist.GetData());
+        <span class="kwd">return</span> Json(datalist.GetData(), <span class="cls">JsonRequestBehavior</span>.AllowGet);
     }
 }</code>
 </pre>
@@ -117,7 +116,7 @@
 </pre>
         </div>
     </div>
-    <div class="widget code col-xl-4">
+    <div class="widget code col-xl-3">
         <div class="widget-header">
             <div class="fa fa-code"></div>
             <span>Model</span>
